@@ -1,0 +1,28 @@
+.main {
+    text-align: center;
+}
+
+.questionImage {
+    margin: 0 auto;
+    width: 50%;
+}
+
+.Question {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1em;
+}
+
+.num {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+
+.input {
+    width: 2em;
+    height: 2em;
+    text-align: center;
+    font-size: 1em;
+}
