@@ -6,13 +6,15 @@ import {Link} from "react-router-dom";
 const A145 = (props) => {
     return (
         <div className="main">
-            <img src="/a_1_45.png" className="questionImage"></img>
+            <div className="QuestionBox">
+                <a>다음 {"<"}보기{">"}를 보고 빈칸에 알맞은 부호를 넣어보세요.</a>
+            </div>
+            
             <A145_Question></A145_Question>
             <A145_Question></A145_Question>
             <A145_Question></A145_Question>
             <A145_Question></A145_Question>
             <A145_Question></A145_Question>
-            <Link to={"/A413"}>A 4 13</Link>
         </div>
     );
 };
