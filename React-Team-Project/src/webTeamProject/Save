@@ -1,0 +1,109 @@
+import React, { useState, useEffect } from "react";
+
+const CoinApp = () => {
+  const [value, setValue] = useState(0); // 맞춰야 할 목표 값
+  const [userInput, setUserInput] = useState({ 10: 0, 50: 0, 100: 0 }); // 사용자가 입력한 동전 갯수
+  const [feedback, setFeedback] = useState(""); // 사용자에게 피드백 메시지
+  const [modalOpen, setModalOpen] = useState(false); // 모달 창 열림 여부
+
+  useEffect(() => {
+    generateRandomValue();
+  }, []);
+
+  const generateRandomValue = () => {
+    const randomValue = Math.floor(Math.random() * 100 + 1) * 10;
+    setValue(randomValue);
+    setUserInput({ 10: 0, 50: 0, 100: 0 });
+  };
+
+  const handleInputChange = (coin, value) => {
+    setUserInput((prevInputs) => ({
+      ...prevInputs,
+      [coin]: value === "" ? 0 : Number(value),
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const totalValue = calculateTotalValue();
+
+    if (totalValue === value) {
+      setFeedback("정답입니다!");
+      setModalOpen(true);
+    } else {
+      setFeedback("다시 시도해보세요");
+    }
+  };
+
+  const calculateTotalValue = () => {
+    const coinValues = { 10: 10, 50: 50, 100: 100 };
+    let total = 0;
+
+    for (const [coin, count] of Object.entries(userInput)) {
+      total += count * coinValues[coin];
+    }
+    return total;
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+    setFeedback(""); // 모달이 닫힐 때 피드백 메시지 초기화
+  };
+
+  const coinImages = {
+    10: "./public/Ten.jpg",
+    50: "/Fifty.jpg",
+    100: "/Hundred.jpg",
+  };
+
+  return (
+    <div className="coin-app">
+      <h4>주어진 동전으로 금액 만들기</h4>
+      <h1>
+        '10원, 50원, 100원'동전을 이용하여 제시된 금액이 되려면 각각 몇 개씩
+        필요한지 적어보세요. {value}원이 필요합니다.
+      </h1>
+      <form onSubmit={handleSubmit}>
+        {Object.keys(userInput).map((coin) => (
+          <div key={coin}>
+            <label>
+              <img
+              src={coinImages[coin]}
+              alt={`${coin}원 동전`}
+              style={{width: "50px", height: "50px"}}
+              onError={(e) => console.log(e)}
+              />{" "}
+              {coinImages[coin]} :
+              {coin}원 동전 갯수 :
+              <input
+                type="text"
+                name={coin}
+                value={userInput[coin]}
+                onChange={(e) => handleInputChange(coin, e.target.value)}
+              />
+            </label>
+          </div>
+        ))}
+        <button type="submit">제출</button>
+      </form>
+      {modalOpen && (
+        <div className="modal">
+          <div className="modal-content">
+            {feedback && <p>{feedback}</p>}
+            <button
+              onClick={() => {
+                generateRandomValue();
+                closeModal();
+              }}
+            >
+              새로운 문제
+            </button>
+          </div>
+          <button onClick={closeModal}>닫기</button>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default CoinApp;
