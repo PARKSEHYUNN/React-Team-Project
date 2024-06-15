@@ -1,0 +1,108 @@
+/* 문제 페이지 컨테이너 */
+.questionContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+/* 문제 제목 */
+.questionTitle {
+  width: 80%;
+  padding: 10px;
+  background-color: #e3f2fd;
+  border: 1px solid #1e88e5;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 1.5em;
+  color: #1e88e5;
+}
+
+/* 문제 내용 */
+.questionContent {
+  width: 80%;
+  padding: 20px;
+  background-color: #fff;
+  border: 2px solid #1e88e5;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  text-align: left;
+  color: #333;
+}
+
+/* 질문 박스 */
+.questionBox {
+  width: 80%;
+  padding: 15px;
+  background-color: #fff;
+  border: 2px solid #1e88e5;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+/* 답란 컨테이너 */
+.answerContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* 답란 스타일 */
+.answerInput {
+  width: 45%;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  border: 1px solid #ccc;
+  border-radius: 50px;
+}
+
+/* 버튼 컨테이너 */
+.buttonContainer {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+/* 버튼 스타일 */
+.answerButton {
+  padding: 10px;
+  margin: 5px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 50px;
+  background-color: #e3f2fd;
+  color: #1e88e5;
+  cursor: pointer;
+}
+
+.answerButton.selected {
+  background-color: #1e88e5;
+  color: #fff;
+}
+
+/* 제출 버튼 */
+.submitButton {
+  width: 50%;
+  padding: 15px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #6a9e34;
+  color: #fff;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+/* 타이머 스타일 */
+.timer {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  font-size: 0.7em;
+  color: #333;
+}
